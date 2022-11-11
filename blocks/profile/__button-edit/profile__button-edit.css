@@ -1,0 +1,11 @@
+.profile__button-edit {
+  background-image: url(../../../images/profile__buttom/button__edit.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+  box-sizing: border-box;
+  max-height: 24px;
+  min-width: 24px;
+  border: 1px solid #fff;
+  margin: 15px 0 0;
+}

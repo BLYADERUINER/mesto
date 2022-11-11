@@ -1,3 +1,12 @@
 .profile {
+  font-family: "Inter", Arial, sans-serif;
+  max-height: 120px;
+  display: flex;
+  align-items: center;
+}
 
+@media screen and (max-width: 568px) {
+  .profile {
+    flex-direction: column;
+  }
 }

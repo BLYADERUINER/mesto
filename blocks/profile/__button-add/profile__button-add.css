@@ -1,0 +1,9 @@
+.profile__button-add {
+  background-image: url(../../../images/profile__buttom/button_plus.png);
+  background-repeat: no-repeat;
+  background-size: 15%;
+  background-position: center;
+  border: 2px solid #fff;
+  min-width: 150px;
+  min-height: 50px;
+}

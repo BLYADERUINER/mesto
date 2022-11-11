@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,10 +9,28 @@
   </head>
   <body class="page">
     <header class="header page__header">
-      <img class="header__logo" src="./images/header/logo.png" alt="Логотип Mesto Russia" />
+      <img
+        class="header__logo"
+        src="./images/header/logo.png"
+        alt="Логотип Mesto Russia"
+      />
     </header>
     <main class="content page__content">
-      <section class="profile content__profile"></section>
+      <section class="profile content__profile">
+        <img
+          class="profile__avatar"
+          src="./images/profile__avatar/Avatar.png"
+          alt="Аватрка"
+        />
+        <div class="profile__info">
+          <div class="profile__container">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="button profile__button-edit"></button>
+          </div>
+          <p class="profile__status">Исследователь океана</p>
+        </div>
+        <button class="button profile__button-add"></button>
+      </section>
       <section class="elements content__elements"></section>
     </main>
     <footer class="footer page__footer"></footer>
