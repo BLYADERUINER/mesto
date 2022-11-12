@@ -3,6 +3,7 @@
   font-style: normal;
   font-weight: 900;
   line-height: 29px;
+  text-rendering: optimizeLegibility;
   margin: 0;
   padding: 0;
 }

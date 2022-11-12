@@ -1,4 +1,5 @@
-.profile__status {
+.footer__text {
+  color: #545454;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -8,9 +9,8 @@
   padding: 0;
 }
 
-@media screen and (max-width: 770px) {
-  .profile__status {
-    text-align: center;
+@media screen and (max-width: 568px) {
+  .footer__text {
     font-size: 14px;
     line-height: 17px;
   }
