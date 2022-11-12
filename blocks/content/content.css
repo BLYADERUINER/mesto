@@ -1,5 +1,7 @@
 .content {
   max-width: 880px;
+  display: grid;
+  grid-row-gap: 50px;
 }
 
 @media screen and (max-width: 920px) {
@@ -10,7 +12,8 @@
 
 @media screen and (max-width: 770px) {
   .content {
-    max-width: 550px;
+    max-width: 600px;
+    grid-row-gap: 36px;
   }
 }
 
