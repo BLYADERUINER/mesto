@@ -7,10 +7,18 @@
   padding: 0;
 }
 
+@media screen and (max-width: 770px) {
+  .profile__name {
+    font-size: 32px;
+    line-height: 36px;
+    text-align: center;
+  }
+}
+
 @media screen and (max-width: 568px) {
   .profile__name {
     font-size: 27px;
     line-height: 33px;
-    text-align: center;
+    margin-right: 10px;
   }
 }

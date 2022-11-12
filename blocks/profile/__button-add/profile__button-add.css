@@ -1,9 +1,16 @@
 .profile__button-add {
   background-image: url(../../../images/profile__buttom/button_plus.png);
   background-repeat: no-repeat;
-  background-size: 15%;
+  background-size: 22px;
   background-position: center;
   border: 2px solid #fff;
-  min-width: 150px;
+  width: 150px;
   min-height: 50px;
+}
+
+@media screen and (max-width: 770px) {
+  .profile__button-add {
+    width: 282px;
+    background-size: 16px;
+  }
 }
