@@ -1,0 +1,19 @@
+.pop-up__container {
+  font-family: "Inter", Arial, sans-serif;
+  position: relative;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 430px;
+  height: 330px;
+  margin: 0;
+  padding: 34px 0 37px;
+}
+
+@media screen and (max-width: 568px) {
+  .pop-up__container {
+    width: 282px;
+    height: 322px;
+    padding: 25px 0;
+  }
+}
