@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mesto</title>
+    <title>Место</title>
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <header class="header page__header">
       <img
         class="header__logo"
-        src="./images/header/logo.png"
+        src="./images/header/logo.svg"
         alt="Логотип Mesto Russia"
       />
     </header>
@@ -19,20 +19,20 @@
       <section class="profile content__profile">
         <img
           class="profile__avatar"
-          src="./images/profile__avatar/Avatar.png"
+          src="./images/profile__avatar/avatar.jpg"
           alt="Аватрка"
         />
         <div class="profile__info">
           <div class="profile__container">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="button profile__button-edit"></button>
+            <button class="button profile__button-edit" type="button"></button>
           </div>
           <p class="profile__status">Исследователь океана</p>
         </div>
-        <button class="button profile__button-add"></button>
+        <button class="button profile__button-add" type="button"></button>
       </section>
       <section class="elements content__elements">
-        <div class="element">
+        <article class="element">
           <img
             class="element__image"
             src="./images/elements/image1.png"
@@ -40,10 +40,10 @@
           />
           <div class="element__container">
             <h2 class="element__title">Карачаевск</h2>
-            <button class="button element__button"></button>
+            <button class="button element__button" type="button"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img
             class="element__image"
             src="./images/elements/image2.png"
@@ -51,10 +51,10 @@
           />
           <div class="element__container">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="button element__button"></button>
+            <button class="button element__button" type="button"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img
             class="element__image"
             src="./images/elements/image3.png"
@@ -62,10 +62,10 @@
           />
           <div class="element__container">
             <h2 class="element__title">Домбай</h2>
-            <button class="button element__button"></button>
+            <button class="button element__button" type="button"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img
             class="element__image"
             src="./images/elements/image4.jpg"
@@ -73,10 +73,10 @@
           />
           <div class="element__container">
             <h2 class="element__title">Камчатка</h2>
-            <button class="button element__button"></button>
+            <button class="button element__button" type="button"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img
             class="element__image"
             src="./images/elements/image5.jpg"
@@ -84,10 +84,10 @@
           />
           <div class="element__container">
             <h2 class="element__title">Байкал</h2>
-            <button class="button element__button"></button>
+            <button class="button element__button" type="button"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img
             class="element__image"
             src="./images/elements/image6.jpg"
@@ -95,25 +95,37 @@
           />
           <div class="element__container">
             <h2 class="element__title">Антарктика</h2>
-            <button class="button element__button"></button>
+            <button class="button element__button" type="button"></button>
           </div>
-        </div>
+        </article>
       </section>
     </main>
     <footer class="footer page__footer">
-      <p class="footer__text">&#169;2022 Mesto Russia</p>
+      <p class="footer__text">&copy;2022 Mesto Russia</p>
     </footer>
-    <section class="pop-up">
+    <div class="pop-up">
       <div class="pop-up__container">
-        <button class="button pop-up__button-close"></button>
-        <form class="pop-up__form">
-          <h2 class="pop-up__title">Редактировать профиль</h2>
-          <input class="pop-up__input pop-up__input-name" />
-          <input class="pop-up__input pop-up__input-status" />
-          <button class="button pop-up__button-save">Сохранить</button>
+        <button class="button pop-up__button-close" type="button"></button>
+        <h2 class="pop-up__title">Редактировать профиль</h2>
+        <form class="pop-up__form" name="popupFormEditProfile" method="post">
+          <input
+            class="pop-up__input pop-up__input_name_edit"
+            name="popupProfileNameEdit"
+            placeholder="Иван Иванов"
+            required
+          />
+          <input
+            class="pop-up__input pop-up__input_status_edit"
+            name="popupProfileStatusEdit"
+            placeholder="Расхититель гробниц"
+            required
+          />
+          <button class="button pop-up__button-save" type="submit">
+            Сохранить
+          </button>
         </form>
       </div>
-    </section>
-    <script src="./script/index.js"></script>
+    </div>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

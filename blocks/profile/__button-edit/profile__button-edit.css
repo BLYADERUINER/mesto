@@ -1,5 +1,5 @@
 .profile__button-edit {
-  background-image: url(../../../images/profile__buttom/button__edit.png);
+  background-image: url(../../../images/profile__buttom/button_edit.svg);
   background-repeat: no-repeat;
   background-size: 10px;
   background-position: center;
@@ -12,7 +12,6 @@
 
 .profile__button-edit:hover {
   opacity: 0.6;
-  transition: all 0.2s linear;
 }
 
 @media screen and (max-width: 770px) {
@@ -23,6 +22,7 @@
 
 @media screen and (max-width: 568px) {
   .profile__button-edit {
+    background-size: 7.5px;
     width: 18px;
     height: 18px;
     margin-top: 9px;
