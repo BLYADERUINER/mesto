@@ -1,8 +1,13 @@
 .element__button {
-  background-image: url(../../../images/elements/element__button.png);
+  background-image: url(../../../images/elements/like__disable.png);
   background-repeat: no-repeat;
   box-sizing: border-box;
   width: 22px;
   height: 19px;
   border: none;
+}
+
+.element__button:hover {
+  opacity: 0.5;
+  transition: all 0.2s linear;
 }

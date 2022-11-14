@@ -34,6 +34,7 @@ function popupFormSubmitHandler (evt) { // функция отправки
     closePopup();
 }
 
+
 popupOpenButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
 popupElement.addEventListener('click', closePopupOnOverlay);
