@@ -7,7 +7,7 @@
   border: none;
   border-radius: 2px;
   min-height: 50px;
-  margin: 18px 0 0;
+  margin: 17px 0 0;
 }
 
 .pop-up__button-save:hover {
@@ -19,5 +19,6 @@
     font-size: 14px;
     line-height: 17px;
     margin: 15px 0 0;
+    min-height: 46px;
   }
 }
