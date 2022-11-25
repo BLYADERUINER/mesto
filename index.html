@@ -32,7 +32,7 @@
         <button class="button profile__button-add" type="button"></button>
       </section>
       <section class="elements content__elements">
-        <article class="element">
+        <!-- <article class="element">
           <img
             class="element__image"
             src="./images/elements/image1.png"
@@ -97,7 +97,7 @@
             <h2 class="element__title">Антарктика</h2>
             <button class="button element__button" type="button"></button>
           </div>
-        </article>
+        </article> -->
       </section>
     </main>
     <footer class="footer page__footer">
@@ -108,7 +108,12 @@
       <div class="pop-up__container">
         <button class="button pop-up__button-close" type="button"></button>
         <h2 class="pop-up__title">Редактировать профиль</h2>
-        <form class="pop-up__form" name="popupFormEditProfile" method="post">
+        <form
+          class="pop-up__form"
+          id="form-edit-profile"
+          name="popupFormEditProfile"
+          method="post"
+        >
           <input
             class="pop-up__input pop-up__input_name_edit"
             name="popupProfileNameEdit"
@@ -134,19 +139,24 @@
       <div class="pop-up__container">
         <button class="button pop-up__button-close" type="button"></button>
         <h2 class="pop-up__title">Новое место</h2>
-        <form class="pop-up__form" name="popupFormEditProfile" method="post">
+        <form
+          class="pop-up__form"
+          id="form-add-card"
+          name="popupFormEditProfile"
+          method="post"
+        >
           <input
-            class="pop-up__input pop-up__input_name_edit"
-            name="popupProfileNameEdit"
+            class="pop-up__input pop-up__input_name_card"
+            name="popupCardName"
             placeholder="Название"
             type="text"
             required
           />
           <input
-            class="pop-up__input pop-up__input_status_edit"
-            name="popupProfileStatusEdit"
+            class="pop-up__input pop-up__input_link_image"
+            name="popupImageCard"
             placeholder="Ссылка на картинку"
-            type="text"
+            type="url"
             required
           />
           <button class="button pop-up__button-save" type="submit">
@@ -155,6 +165,16 @@
         </form>
       </div>
     </div>
+
+    <template id="card">
+      <article class="element">
+        <img class="element__image" src="" alt="" />
+        <div class="element__container">
+          <h2 class="element__title"></h2>
+          <button class="button element__button" type="button"></button>
+        </div>
+      </article>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
