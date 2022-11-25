@@ -54,10 +54,24 @@ const cardsArray = [ // массив начальных карт
   }
 ];
 
+const likedCard = function (event) { // функция лайка
+  event.target.classList.toggle('element__button_active'); // переключаем класс лайка
+};
+
+const binCard = function (event) { // функция удаления карточки
+  event.target.closest('.element').remove(); // находим родитель карточки и удаляем
+};
+
 const createCard = function (card) { // функция создания карты
   const cardElement = elementCardTemplate.cloneNode(true); // копируем шаблон
   const cardTitle = cardElement.querySelector('.element__title'); // создаем название
   const cardImage = cardElement.querySelector('.element__image'); // а так же ссылку
+  const buttonLikeCard = cardElement.querySelector('.element__button'); // кнопку лайка
+  const buttonBinCard = cardElement.querySelector('.element__button-bin'); // кнопку удаления карточки
+
+  buttonLikeCard.addEventListener('click', likedCard); // обработаем лайк по клику
+  buttonBinCard.addEventListener('click', binCard); // а так же удаление карточки
+
   cardTitle.textContent = card.name; // обозначаем равенство значению имени массива
   cardImage.src = card.link; // и ссылку на картинку
 
@@ -66,21 +80,13 @@ const createCard = function (card) { // функция создания карт
 
 const renderCard = function (element, cardsContainer) { // функция рендера карт
   const card = createCard(element); // создаем карту
-  cardsContainer.append(card); // передаем карту в конец контейнера
+  cardsContainer.prepend(card); // передаем карту в начало контейнера
 };
 
 cardsArray.forEach(function (item) { // перебираем массив
   renderCard(item, elementsSection); // создаем и добавляем карточки в секцию
 });
 
-
-
-// const likedCard = function (event) {
-//   console.log(event.target);
-//   event.target.classList.toggle('element__button_active');
-// };
-
-// likeButtonCard.addEventListener('click', likedCard);
 
 
 const openPopup = function (popup) {   // функция открытия ред.профиля
@@ -103,7 +109,6 @@ const closePopup = function (popup) {   // функция закрытия ре�
 
 
 // const likeButtons = document.querySelectorAll('.element__button'); //ебаные лайки
-
 // for (let likeButton of likeButtons) {
 //   likeButton.addEventListener('click', function() {
 //     alert('Нахуй ты жмал ?');
