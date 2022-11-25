@@ -18,6 +18,18 @@ const popupFormElement = popupProfileEdit.querySelector('.pop-up__form'); // п�
 const nameInput = popupFormElement.querySelector('.pop-up__input_name_edit'); // переменная ввода имени поп-пуп
 const statusInput = popupFormElement.querySelector('.pop-up__input_status_edit'); // переменная ввода статуса поп-пуп
 
+// // Elements section
+// const elementCard = document.querySelector('.element');
+// const likeButtonCard = elementCard.querySelector('.element__button');
+
+
+// const likedCard = function (event) {
+//   console.log(event.target);
+//   event.target.classList.toggle('element__button_active');
+// };
+
+// likeButtonCard.addEventListener('click', likedCard);
+
 const openPopup = function (popup) {   // функция открытия ред.профиля
   popup.classList.add('pop-up_opened');
   if (popupProfileEdit) { // если открывается ред.проф
