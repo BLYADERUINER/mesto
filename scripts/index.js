@@ -1,9 +1,9 @@
 // pop-up PROFILE-EDIT;
-const popupProfileEdit = document.querySelector('.pop-up__profile-edit'); // поп-пуп редактирования профиля
+const popupProfileEdit = document.querySelector('.pop-up_profile-edit'); // поп-пуп редактирования профиля
 const popupCloseProfileEdit = popupProfileEdit.querySelector('.pop-up__button-close'); // закрытиe поп-пуп профиля
 
 // pop-up ELEMENTS-CARD;
-const popupElementsCard = document.querySelector('.pop-up__elements'); // поп-пуп карточки
+const popupElementsCard = document.querySelector('.pop-up_elements'); // поп-пуп карточки
 const popupCloseElementsCard = popupElementsCard.querySelector('.pop-up__button-close'); // закрытие поп-пуп карточек
 
 // Profile section
@@ -24,7 +24,7 @@ const nameCardInput = popupAddCardForm.querySelector('.pop-up__input_name_card')
 const imageLinkCardInput = popupAddCardForm.querySelector('.pop-up__input_link_image'); // ввод ссылки на картинку
 
 // pop-up Image Card
-const popupCardImage = document.querySelector('.pop-up__card-image'); // поппуп Картинки карточки
+const popupCardImage = document.querySelector('.pop-up_card-image'); // поппуп Картинки карточки
 const popupCloseCardImage = popupCardImage.querySelector('.pop-up__button-close'); // кнопка close поппуп карточки картинок
 const popupImage = popupCardImage.querySelector('.pop-up__image'); // картинка попуп
 const popupFigcaption = popupCardImage.querySelector('.pop-up__figcaption'); // подпись к картинке
