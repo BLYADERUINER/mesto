@@ -1,6 +1,7 @@
 .elements {
   font-family: "Inter", Arial, sans-serif;
   max-width: 880px;
+  min-height: 30vh;
   display: grid;
   grid-template-columns: repeat(3, minmax(auto, 282px));
   column-gap: 17px;

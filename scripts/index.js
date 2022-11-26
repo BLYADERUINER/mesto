@@ -31,36 +31,9 @@ const popupFigcaption = popupCardImage.querySelector('.pop-up__figcaption'); // 
 
 // // Elements section
 const elementsSection = document.querySelector('.elements'); // секция Карточек
-const elementCardTemplate = document.querySelector('#card').content; // шаблон Карт
+const elementCardTemplate = document.querySelector('#card').content.querySelector('.element'); // шаблон Карт
 
 
-
-const cardsArray = [ // массив начальных карт
-  {
-    name: 'Карачевск',
-    link: 'https://images.unsplash.com/photo-1538819285938-6a9b4eda500b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1965&q=80'
-  },
-  {
-    name: 'Гора Эльбрус',
-    link: 'https://images.unsplash.com/photo-1638989432598-78740c9ba7a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80'
-  },
-  {
-    name: 'Домбай',
-    link: 'https://images.unsplash.com/photo-1617911478446-c7f1dd96966e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://images.unsplash.com/photo-1557771810-22b35659143c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://images.unsplash.com/photo-1552735855-557bdba3961a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=689&q=80'
-  },
-  {
-    name: 'Антарктика',
-    link: 'https://images.unsplash.com/photo-1551415923-58aba9efeb2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80'
-  }
-];
 
 const likedCard = function (event) { // функция лайка
   event.target.classList.toggle('element__button_active'); // переключаем класс лайка
@@ -106,10 +79,6 @@ cardsArray.forEach(function (item) { // перебираем массив
 
 const openPopup = function (popup) {   // функция открытия ред.профиля
   popup.classList.add('pop-up_opened');
-  if (popupProfileEdit) { // если открывается ред.проф
-   nameInputEdit.value = profileName.textContent;
-   statusInputEdit.value = profileStatus.textContent;
-  }
 };
 
 const closePopup = function (popup) {   // функция закрытия ред.профиля
@@ -122,7 +91,7 @@ const closePopup = function (popup) {   // функция закрытия ре�
 //   }
 // }
 
-const popupAddCardFormSubmitHandler = function (event) { // функция отправки формы карт
+const submitFormCard = function (event) { // функция отправки формы карт
   event.preventDefault();
   const card = { // создаем переменную с объектами
     name: nameCardInput.value, // имя массива равно вводу
@@ -130,10 +99,12 @@ const popupAddCardFormSubmitHandler = function (event) { // функция от�
   }
 
   renderCard(card, elementsSection); // создаем с помощью функции карточку и добавляем в
+
   closePopup(popupElementsCard);
+  popupAddCardForm.reset();
 };
 
-const popupEditFormSubmitHandler = function (event) { // функция отправки формы редактирования
+const submitFormProfile = function (event) { // функция отправки формы редактирования
   event.preventDefault();
   profileName.textContent = nameInputEdit.value; // значение переменной равно вводу
   profileStatus.textContent = statusInputEdit.value;
@@ -143,6 +114,8 @@ const popupEditFormSubmitHandler = function (event) { // функция отпр
 
 
 popupOpenProfileEdit.addEventListener('click', function () { // обработчик открытия попупы редактирования профиля
+  nameInputEdit.value = profileName.textContent;
+  statusInputEdit.value = profileStatus.textContent;
   openPopup(popupProfileEdit);
 });
 
@@ -164,5 +137,5 @@ popupCloseCardImage.addEventListener('click', function () { // обработч�
 
 // popupProfileEdit.addEventListener('click', closePopupOnOverlay); // обработчки закрытия вне окна
 
-popupEditForm.addEventListener('submit', popupEditFormSubmitHandler); // обработчик отправки формы ред.профиля
-popupAddCardForm.addEventListener('submit', popupAddCardFormSubmitHandler); // Обработчик отправки формы добавления карточек
+popupEditForm.addEventListener('submit', submitFormProfile); // обработчик отправки формы ред.профиля
+popupAddCardForm.addEventListener('submit', submitFormCard); // Обработчик отправки формы добавления карточек
