@@ -38,27 +38,27 @@ const elementCardTemplate = document.querySelector('#card').content; // шабл
 const cardsArray = [ // массив начальных карт
   {
     name: 'Карачевск',
-    link: '../images/elements/image1.jpg'
+    link: './images/elements/image1.jpg'
   },
   {
     name: 'Гора Эльбрус',
-    link: '../images/elements/image2.jpg'
+    link: './images/elements/image2.jpg'
   },
   {
     name: 'Домбай',
-    link: '../images/elements/image3.jpg'
+    link: './images/elements/image3.jpg'
   },
   {
     name: 'Камчатка',
-    link: '../images/elements/image4.jpg'
+    link: './images/elements/image4.jpg'
   },
   {
     name: 'Байкал',
-    link: '../images/elements/image5.jpg'
+    link: './images/elements/image5.jpg'
   },
   {
     name: 'Антарктика',
-    link: '../images/elements/image6.jpg'
+    link: './images/elements/image6.jpg'
   }
 ];
 
