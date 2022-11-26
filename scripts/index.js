@@ -23,34 +23,42 @@ const popupAddCardForm = popupElementsCard.querySelector('#form-add-card'); // �
 const nameCardInput = popupAddCardForm.querySelector('.pop-up__input_name_card'); // ввод названия карты
 const imageLinkCardInput = popupAddCardForm.querySelector('.pop-up__input_link_image'); // ввод ссылки на картинку
 
+// pop-up Image Card
+const popupCardImage = document.querySelector('.pop-up__card-image'); // поппуп Картинки карточки
+const popupCloseCardImage = popupCardImage.querySelector('.pop-up__button-close'); // кнопка close поппуп карточки картинок
+const popupImage = popupCardImage.querySelector('.pop-up__image'); // картинка попуп
+const popupFigcaption = popupCardImage.querySelector('.pop-up__figcaption'); // подпись к картинке
+
 // // Elements section
 const elementsSection = document.querySelector('.elements'); // секция Карточек
 const elementCardTemplate = document.querySelector('#card').content; // шаблон Карт
 
+
+
 const cardsArray = [ // массив начальных карт
   {
     name: 'Карачевск',
-    link: './images/elements/image1.png'
+    link: '../images/elements/image1.jpg'
   },
   {
     name: 'Гора Эльбрус',
-    link: './images/elements/image2.png'
+    link: '../images/elements/image2.jpg'
   },
   {
     name: 'Домбай',
-    link: './images/elements/image3.png'
+    link: '../images/elements/image3.jpg'
   },
   {
     name: 'Камчатка',
-    link: './images/elements/image4.jpg'
+    link: '../images/elements/image4.jpg'
   },
   {
     name: 'Байкал',
-    link: './images/elements/image5.jpg'
+    link: '../images/elements/image5.jpg'
   },
   {
     name: 'Антарктика',
-    link: './images/elements/image6.jpg'
+    link: '../images/elements/image6.jpg'
   }
 ];
 
@@ -75,6 +83,12 @@ const createCard = function (card) { // функция создания карт
   cardTitle.textContent = card.name; // обозначаем равенство значению имени массива
   cardImage.src = card.link; // и ссылку на картинку
 
+  cardImage.addEventListener('click', function () { // обработчик клика по картинке
+    popupImage.src = cardImage.src; // пусть поппуп картинка равна картинке карточке
+    popupFigcaption.textContent = cardTitle.textContent; // подпись равна тексту карточке
+    openPopup(popupCardImage); // открываем попап картинки
+  });
+
   return cardElement;
 };
 
@@ -88,18 +102,17 @@ cardsArray.forEach(function (item) { // перебираем массив
 });
 
 
-
 const openPopup = function (popup) {   // функция открытия ред.профиля
   popup.classList.add('pop-up_opened');
   if (popupProfileEdit) { // если открывается ред.проф
    nameInputEdit.value = profileName.textContent;
    statusInputEdit.value = profileStatus.textContent;
   }
-}
+};
 
 const closePopup = function (popup) {   // функция закрытия ред.профиля
   popup.classList.remove('pop-up_opened');
-}
+};
 
 // const closePopupOnOverlay = function(event) {   // функция закрытия ред.профиля вне модального окна
 //   if (event.target === event.currentTarget) {
@@ -107,23 +120,14 @@ const closePopup = function (popup) {   // функция закрытия ре�
 //   }
 // }
 
-
-// const likeButtons = document.querySelectorAll('.element__button'); //ебаные лайки
-// for (let likeButton of likeButtons) {
-//   likeButton.addEventListener('click', function() {
-//     alert('Нахуй ты жмал ?');
-//     likeButton.classList.toggle('element__button_active');
-//   })
-// }
-
 const popupAddCardFormSubmitHandler = function (event) { // функция отправки формы карт
   event.preventDefault();
   const card = { // создаем переменную с объектами
-    name: nameCardInput.value,
-    link: imageLinkCardInput.value
+    name: nameCardInput.value, // имя массива равно вводу
+    link: imageLinkCardInput.value  // ссылка массива равно вводу
   }
 
-  renderCard(card, elementsSection); // создаем с помощью функции карточку и добавляем
+  renderCard(card, elementsSection); // создаем с помощью функции карточку и добавляем в
   closePopup(popupElementsCard);
 };
 
@@ -152,7 +156,11 @@ popupCloseElementsCard.addEventListener('click', function () { // обработ
   closePopup(popupElementsCard);
 });
 
-// popupProfileEdit.addEventListener('click', closePopupOnOverlay);
+popupCloseCardImage.addEventListener('click', function () { // обработчик закрытия поппупы картинки
+  closePopup(popupCardImage);
+});
+
+// popupProfileEdit.addEventListener('click', closePopupOnOverlay); // обработчки закрытия вне окна
 
 popupEditForm.addEventListener('submit', popupEditFormSubmitHandler); // обработчик отправки формы ред.профиля
 popupAddCardForm.addEventListener('submit', popupAddCardFormSubmitHandler); // Обработчик отправки формы добавления карточек
