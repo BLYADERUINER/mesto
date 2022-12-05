@@ -85,11 +85,23 @@ const closePopup = function (popup) {   // функция закрытия ре�
   popup.classList.remove('pop-up_opened');
 };
 
+
+const popups = document.querySelectorAll('.pop-up'); // new
+popups.forEach(function(item) {
+  item.addEventListener('click', (event) => {
+        if (event.target === event.currentTarget) {
+          closePopup(item);
+        };
+      });
+    });
+
+
 // const closePopupOnOverlay = function(event) {   // функция закрытия ред.профиля вне модального окна
 //   if (event.target === event.currentTarget) {
 //     closePopup();
 //   }
-// }
+// };
+
 
 const submitFormCard = function (event) { // функция отправки формы карт
   event.preventDefault();
@@ -125,7 +137,7 @@ popupCloseProfileEdit.addEventListener('click', function () { // обработ�
 
 popupOpenElementsCard.addEventListener('click', function () { // обработчик открытия попупы добавления элементов карт
   openPopup(popupElementsCard);
-})
+});
 
 popupCloseElementsCard.addEventListener('click', function () { // обработчик закрытия попупы элементов карт
   closePopup(popupElementsCard);
@@ -135,7 +147,7 @@ popupCloseCardImage.addEventListener('click', function () { // обработч�
   closePopup(popupCardImage);
 });
 
-// popupProfileEdit.addEventListener('click', closePopupOnOverlay); // обработчки закрытия вне окна
+// popupElementsCard.addEventListener('click', closePopupOnOverlay); // обработчки закрытия вне окна
 
 popupEditForm.addEventListener('submit', submitFormProfile); // обработчик отправки формы ред.профиля
 popupAddCardForm.addEventListener('submit', submitFormCard); // Обработчик отправки формы добавления карточек
