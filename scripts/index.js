@@ -29,10 +29,12 @@ const popupCloseCardImage = popupCardImage.querySelector('.pop-up__button-close'
 const popupImage = popupCardImage.querySelector('.pop-up__image'); // картинка попуп
 const popupFigcaption = popupCardImage.querySelector('.pop-up__figcaption'); // подпись к картинке
 
-// // Elements section
+// Elements section
 const elementsSection = document.querySelector('.elements'); // секция Карточек
 const elementCardTemplate = document.querySelector('#card').content.querySelector('.element'); // шаблон Карт
 
+// popups Array
+const popups = document.querySelectorAll('.pop-up');
 
 
 const likedCard = function (event) { // функция лайка
@@ -67,6 +69,7 @@ const createCard = function (card) { // функция создания карт
   return cardElement;
 };
 
+
 const renderCard = function (element, cardsContainer) { // функция рендера карт
   const card = createCard(element); // создаем карту
   cardsContainer.prepend(card); // передаем карту в начало контейнера
@@ -77,30 +80,27 @@ cardsArray.forEach(function (item) { // перебираем массив
 });
 
 
+
 const openPopup = function (popup) {   // функция открытия ред.профиля
   popup.classList.add('pop-up_opened');
+  closePopupOnOverlay();
 };
+
 
 const closePopup = function (popup) {   // функция закрытия ред.профиля
   popup.classList.remove('pop-up_opened');
 };
 
 
-const popups = document.querySelectorAll('.pop-up'); // new
-popups.forEach(function(item) {
-  item.addEventListener('click', (event) => {
-        if (event.target === event.currentTarget) {
-          closePopup(item);
-        };
+const closePopupOnOverlay = function () { // функция закрытия вне модального окна
+  popups.forEach(function(item) { // проходимся по массиву
+    item.addEventListener('click', (event) => { // добавляем на каждый попап обработчик
+          if (event.target === event.currentTarget) { // если клик происходит вне
+            closePopup(item); // закрываем
+          }
       });
-    });
-
-
-// const closePopupOnOverlay = function(event) {   // функция закрытия ред.профиля вне модального окна
-//   if (event.target === event.currentTarget) {
-//     closePopup();
-//   }
-// };
+   });
+};
 
 
 const submitFormCard = function (event) { // функция отправки формы карт
@@ -115,6 +115,7 @@ const submitFormCard = function (event) { // функция отправки ф�
   closePopup(popupElementsCard);
   popupAddCardForm.reset();
 };
+
 
 const submitFormProfile = function (event) { // функция отправки формы редактирования
   event.preventDefault();
