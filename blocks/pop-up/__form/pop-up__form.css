@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 26px;
   margin: 0 auto;
   padding: 0;
 }

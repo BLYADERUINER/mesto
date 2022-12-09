@@ -36,6 +36,7 @@
     <footer class="footer page__footer">
       <p class="footer__text">&copy;2022 Mesto Russia</p>
     </footer>
+
     <div class="pop-up pop-up_profile-edit">
       <div class="pop-up__container">
         <button class="button pop-up__button-close" type="button"></button>
@@ -43,29 +44,36 @@
         <form
           class="pop-up__form"
           id="form-edit-profile"
-          name="popupFormEditProfile"
+          name="popupFormProfile"
           method="post"
         >
           <input
             class="pop-up__input pop-up__input_name_edit"
-            name="popupProfileNameEdit"
+            name="nameEdit"
             placeholder="Иван Иванов"
             type="text"
+            minlength="2"
+            maxlength="40"
             required
           />
+          <span class="pop-up__error"></span>
           <input
             class="pop-up__input pop-up__input_status_edit"
-            name="popupProfileStatusEdit"
+            name="statusEdit"
             placeholder="Расхититель гробниц"
             type="text"
+            minlength="2"
+            maxlength="400"
             required
           />
+          <span class="pop-up__error"></span>
           <button class="button pop-up__button-save" type="submit">
             Сохранить
           </button>
         </form>
       </div>
     </div>
+
     <div class="pop-up pop-up_elements">
       <div class="pop-up__container">
         <button class="button pop-up__button-close" type="button"></button>
@@ -73,23 +81,27 @@
         <form
           class="pop-up__form"
           id="form-add-card"
-          name="popupFormEditProfile"
+          name="popupFormCard"
           method="post"
         >
           <input
             class="pop-up__input pop-up__input_name_card"
-            name="popupCardName"
+            name="nameCard"
             placeholder="Название"
             type="text"
+            minlength="2"
+            maxlength="30"
             required
           />
+          <span class="pop-up__error"></span>
           <input
             class="pop-up__input pop-up__input_link_image"
-            name="popupImageCard"
+            name="urlCard"
             placeholder="Ссылка на картинку"
             type="url"
             required
           />
+          <span class="pop-up__error"></span>
           <button class="button pop-up__button-save" type="submit">
             Создать
           </button>
@@ -113,6 +125,7 @@
         </div>
       </article>
     </template>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/arrays.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
