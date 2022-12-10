@@ -80,15 +80,20 @@ cardsArray.forEach(function (item) { // перебираем массив
 });
 
 
+let openedPopup; // открытый  попап
 
 const openPopup = function (popup) {   // функция открытия ред.профиля
   popup.classList.add('pop-up_opened');
+  openedPopup = popup;  // откртый попап равен попапу
   closePopupOnOverlay();
+  document.addEventListener('keyup', closePopupOnEsc); // добавим обработчик на откртый попап, который закрываеться по клику на esc
 };
 
 
 const closePopup = function (popup) {   // функция закрытия ред.профиля
   popup.classList.remove('pop-up_opened');
+  openedPopup = null; // открытый попап null
+  document.removeEventListener('keyup', closePopupOnEsc); // убираем обработчик
 };
 
 
@@ -100,6 +105,13 @@ const closePopupOnOverlay = function () { // функция закрытия в�
           }
       });
    });
+};
+
+
+const closePopupOnEsc = function (element) { // функция закрытия на escape
+  if (element.key === 'Escape') { // если происходит событие на кнопку
+    closePopup(openedPopup); // закрыть открытый попап
+  }
 };
 
 
