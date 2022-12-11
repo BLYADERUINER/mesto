@@ -14,12 +14,12 @@ const profileName = profileSection.querySelector('.profile__name'); // имя п
 const profileStatus = profileSection.querySelector('.profile__status'); // статуса профиля
 
 // pop-up Form-Edit
-const popupEditForm = popupProfileEdit.querySelector('#form-edit-profile'); // форма поппуп (edit profile)
+const popupEditForm = document.forms['popupFormProfile']; // форма поппуп (edit profile)
 const nameInputEdit = popupEditForm.querySelector('.pop-up__input_name_edit'); // ввод имени поп-пуп (edit profile)
 const statusInputEdit = popupEditForm.querySelector('.pop-up__input_status_edit'); // ввод статуса поп-пуп (edit profile)
 
 // pop-up Add-Card
-const popupAddCardForm = popupElementsCard.querySelector('#form-add-card'); // форма поппуп (add card)
+const popupAddCardForm = document.forms['popupFormCard']; // форма поппуп (add card)
 const nameCardInput = popupAddCardForm.querySelector('.pop-up__input_name_card'); // ввод названия карты
 const imageLinkCardInput = popupAddCardForm.querySelector('.pop-up__input_link_image'); // ввод ссылки на картинку
 
@@ -37,11 +37,11 @@ const elementCardTemplate = document.querySelector('#card').content.querySelecto
 const popups = document.querySelectorAll('.pop-up');
 
 
-const likedCard = function (event) { // функция лайка
+const toggleCard = function (event) { // функция лайка
   event.target.classList.toggle('element__button_active'); // переключаем класс лайка
 };
 
-const binCard = function (event) { // функция удаления карточки
+const deleteCard = function (event) { // функция удаления карточки
   event.target.closest('.element').remove(); // находим родитель карточки и удаляем
 };
 
@@ -52,8 +52,8 @@ const createCard = function (card) { // функция создания карт
   const buttonLikeCard = cardElement.querySelector('.element__button'); // кнопку лайка
   const buttonBinCard = cardElement.querySelector('.element__button-bin'); // кнопку удаления карточки
 
-  buttonLikeCard.addEventListener('click', likedCard); // обработаем лайк по клику
-  buttonBinCard.addEventListener('click', binCard); // а так же удаление карточки
+  buttonLikeCard.addEventListener('click', toggleCard); // обработаем лайк по клику
+  buttonBinCard.addEventListener('click', deleteCard); // а так же удаление карточки
 
   cardTitle.textContent = card.name; // обозначаем равенство значению имени массива
   cardImage.src = card.link; // и ссылку на картинку
@@ -82,29 +82,10 @@ cardsArray.forEach(function (item) { // перебираем массив
 
 let openedPopup; // открытый  попап
 
-const openPopup = function (popup) {   // функция открытия ред.профиля
-  popup.classList.add('pop-up_opened');
-  openedPopup = popup;  // откртый попап равен попапу
-  closePopupOnOverlay();
-  document.addEventListener('keyup', closePopupOnEsc); // добавим обработчик на откртый попап, который закрываеться по клику на esc
-};
-
-
-const closePopup = function (popup) {   // функция закрытия ред.профиля
-  popup.classList.remove('pop-up_opened');
-  openedPopup = null; // закрытый попап равен null
-  document.removeEventListener('keyup', closePopupOnEsc); // убираем обработчик
-};
-
-
-const closePopupOnOverlay = function () { // функция закрытия вне модального окна
-  popups.forEach(function(item) { // проходимся по массиву
-    item.addEventListener('mousedown', (event) => { // добавляем на каждый попап обработчик
-          if (event.target === event.currentTarget) { // если клик происходит вне
-            closePopup(item); // закрываем
-          }
-      });
-   });
+const closePopupOnOverlay = function (event) { // функция закрытия вне модального окна
+  if (event.target === event.currentTarget) { // если клик происходит вне
+    closePopup(openedPopup); // закрываем
+  }
 };
 
 
@@ -112,6 +93,22 @@ const closePopupOnEsc = function (element) { // функция закрытия 
   if (element.key === 'Escape') { // если происходит событие на кнопку
     closePopup(openedPopup); // закрыть открытый попап
   }
+};
+
+
+const openPopup = function (popup) {   // функция открытия ред.профиля
+  popup.classList.add('pop-up_opened');
+  openedPopup = popup;  // откртый попап равен попапу
+  popup.addEventListener('mousedown', closePopupOnOverlay);
+  document.addEventListener('keyup', closePopupOnEsc); // добавим обработчик на откртый попап, который закрываеться по клику на esc
+};
+
+
+const closePopup = function (popup) {   // функция закрытия ред.профиля
+  popup.classList.remove('pop-up_opened');
+  openedPopup = null; // закрытый попап равен null
+  popup.removeEventListener('mousedown', closePopupOnOverlay);
+  document.removeEventListener('keyup', closePopupOnEsc); // убираем обработчик
 };
 
 
@@ -124,7 +121,7 @@ const submitFormCard = function () { // функция отправки форм
   renderCard(card, elementsSection); // создаем с помощью функции карточку и добавляем в
 
   closePopup(popupElementsCard);
-  popupAddCardForm.reset();
+  popupAddCardForm.reset(); // очищаем форму
 };
 
 
@@ -133,6 +130,7 @@ const submitFormProfile = function () { // функция отправки фо�
   profileStatus.textContent = statusInputEdit.value;
 
   closePopup(popupProfileEdit); // Закрываем после отправки
+  popupEditForm.reset(); // очищаем форму
 };
 
 

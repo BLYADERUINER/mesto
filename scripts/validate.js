@@ -51,10 +51,22 @@ const changeSubmitButton = function (inputList, submitButton, object) { // фу�
 };
 
 
+const resetSubmitButton = function (inputList, submitButton, object) { // функция сброса кнопки после reset
+    setTimeout(function () {
+        changeSubmitButton(inputList, submitButton, object); // вызываем функцию после 0s reset
+    }, 0);
+};
+
+
 const setEventListeners = function (form, object) { // функция прослушивания событий
     const inputList = Array.from(form.querySelectorAll(object.inputSelector)); // находим массив всех инпутов
     const submitButton = form.querySelector(object.submitButtonSelector); // находим кнопку отправки в форме
-    changeSubmitButton(inputList, submitButton, object); // проверяем кнопку на валидность формы
+    changeSubmitButton(inputList, submitButton, object); // деактивируем при первой загрузке кнопку
+
+    form.addEventListener('reset', function () { // после reset form
+        resetSubmitButton(inputList, submitButton, object); // reset кнопку отправки
+    });
+
     inputList.forEach(function (input) { // проходимся по инпутам
         input.addEventListener('input', function () { // вешая на каждый инпут
             checkValidityInput(input, object); // функцию валидности ввода
