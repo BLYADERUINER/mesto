@@ -49,6 +49,7 @@
         >
           <input
             class="pop-up__input pop-up__input_name_edit"
+            id="input-profilename"
             name="nameEdit"
             placeholder="Иван Иванов"
             type="text"
@@ -56,9 +57,10 @@
             maxlength="40"
             required
           />
-          <span class="pop-up__error"></span>
+          <span class="pop-up__error" id="input-profilename-error"></span>
           <input
             class="pop-up__input pop-up__input_status_edit"
+            id="input-profilestatus"
             name="statusEdit"
             placeholder="Расхититель гробниц"
             type="text"
@@ -66,7 +68,7 @@
             maxlength="400"
             required
           />
-          <span class="pop-up__error"></span>
+          <span class="pop-up__error" id="input-profilestatus-error"></span>
           <button class="button pop-up__button-save" type="submit">
             Сохранить
           </button>
@@ -86,6 +88,7 @@
         >
           <input
             class="pop-up__input pop-up__input_name_card"
+            id="input-namecard"
             name="nameCard"
             placeholder="Название"
             type="text"
@@ -93,15 +96,16 @@
             maxlength="30"
             required
           />
-          <span class="pop-up__error"></span>
+          <span class="pop-up__error" id="input-namecard-error"></span>
           <input
             class="pop-up__input pop-up__input_link_image"
+            id="input-urlcard"
             name="urlCard"
             placeholder="Ссылка на картинку"
             type="url"
             required
           />
-          <span class="pop-up__error"></span>
+          <span class="pop-up__error" id="input-urlcard-error"></span>
           <button class="button pop-up__button-save" type="submit">
             Создать
           </button>

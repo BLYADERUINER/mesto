@@ -92,14 +92,14 @@ const openPopup = function (popup) {   // функция открытия ред
 
 const closePopup = function (popup) {   // функция закрытия ред.профиля
   popup.classList.remove('pop-up_opened');
-  openedPopup = null; // открытый попап null
+  openedPopup = null; // закрытый попап равен null
   document.removeEventListener('keyup', closePopupOnEsc); // убираем обработчик
 };
 
 
 const closePopupOnOverlay = function () { // функция закрытия вне модального окна
   popups.forEach(function(item) { // проходимся по массиву
-    item.addEventListener('click', (event) => { // добавляем на каждый попап обработчик
+    item.addEventListener('mousedown', (event) => { // добавляем на каждый попап обработчик
           if (event.target === event.currentTarget) { // если клик происходит вне
             closePopup(item); // закрываем
           }
@@ -115,8 +115,7 @@ const closePopupOnEsc = function (element) { // функция закрытия 
 };
 
 
-const submitFormCard = function (event) { // функция отправки формы карт
-  event.preventDefault();
+const submitFormCard = function () { // функция отправки формы карт
   const card = { // создаем переменную с объектами
     name: nameCardInput.value, // имя массива равно вводу
     link: imageLinkCardInput.value  // ссылка массива равно вводу
@@ -129,8 +128,7 @@ const submitFormCard = function (event) { // функция отправки ф�
 };
 
 
-const submitFormProfile = function (event) { // функция отправки формы редактирования
-  event.preventDefault();
+const submitFormProfile = function () { // функция отправки формы редактирования
   profileName.textContent = nameInputEdit.value; // значение переменной равно вводу
   profileStatus.textContent = statusInputEdit.value;
 
@@ -160,7 +158,6 @@ popupCloseCardImage.addEventListener('click', function () { // обработч�
   closePopup(popupCardImage);
 });
 
-// popupElementsCard.addEventListener('click', closePopupOnOverlay); // обработчки закрытия вне окна
 
 popupEditForm.addEventListener('submit', submitFormProfile); // обработчик отправки формы ред.профиля
 popupAddCardForm.addEventListener('submit', submitFormCard); // Обработчик отправки формы добавления карточек

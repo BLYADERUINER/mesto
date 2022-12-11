@@ -1,5 +1,5 @@
 .pop-up__error {
-  height: 26px;
+  min-height: 26px;
   font-size: 12px;
   font-weight: 400;
   line-height: 15px;
