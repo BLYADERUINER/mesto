@@ -1,4 +1,4 @@
-const cardsArray = [ // массив начальных карт
+export const cardsArray = [ // массив начальных карт
   {
     name: 'Карачевск',
     link: 'https://images.unsplash.com/photo-1538819285938-6a9b4eda500b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1965&q=80'
