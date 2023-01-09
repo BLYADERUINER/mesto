@@ -1,5 +1,5 @@
 import { popupCardImage, popupImage, popupFigcaption} from './variables.js';
-import { openPopup  } from './index.js';
+import { openPopup } from './index.js';
 
 
 

@@ -1,5 +1,5 @@
 import { cardsArray } from './arrays.js';
-import { Card } from './card.js';
+import { Card } from './Card.js';
 import { popupProfileEdit, popupCloseProfileEdit, popupElementsCard, popupCloseElementsCard,
   popupOpenProfileEdit, popupOpenElementsCard, profileName, profileStatus, popupEditForm, nameInputEdit, statusInputEdit, popupAddCardForm,
   nameCardInput, imageLinkCardInput, popupCardImage, popupCloseCardImage, elementsSection } from './variables.js';
