@@ -1,21 +1,21 @@
 export class FromValidator  {
-  constructor (objectValidation, form){
-    this._objectValidation = objectValidation;
-    this._form = form;
-    this._inputList = Array.from(this._form.querySelectorAll(this._objectValidation.inputSelector));
-    this._submitButton = this._form.querySelector(this._objectValidation.submitButtonSelector);
+  constructor (objectValidation, form){ // конструктор принимает объект валида и форму
+    this._objectValidation = objectValidation; //объект
+    this._form = form; //форма
+    this._inputList = Array.from(this._form.querySelectorAll(this._objectValidation.inputSelector)); //массив инпутов формы
+    this._submitButton = this._form.querySelector(this._objectValidation.submitButtonSelector); //кнопка сабмит формы
   };
 
 
-  _showError(input) {
+  _showError(input) { // метод показа ошибки
     const error = this._form.querySelector(`#${input.id}-error`); // находим с помощью шаблонных строк ошибку
     error.classList.add(this._objectValidation.errorClass); // добавить класс показывающий ошибку
-    error.textContent = input.validationMessage; // текст ошибки равен сообщению дефолтной ошибки ???
-    input.classList.add(this._objectValidation.inputErrorClass); // добавить класс показывающий подчеркивания ошибки ???
+    error.textContent = input.validationMessage; // текст ошибки равен сообщению дефолтной ошибки
+    input.classList.add(this._objectValidation.inputErrorClass); // добавить класс показывающий подчеркивания ошибки
   };
 
 
-  _hideError(input) { // функция скрытия ошибки
+  _hideError(input) { // метод скрытия ошибки
     const error = this._form.querySelector(`#${input.id}-error`); // находим с помощью шаблонных строк ошибку
     error.classList.remove(this._objectValidation.errorClass); // убираем класс показывающую ошибку
     error.textContent = '';  // ошибка пустая
@@ -23,7 +23,7 @@ export class FromValidator  {
   };
 
 
-  _checkValidityInput(input) { // функция проверки на валидность ввода
+  _checkValidityInput(input) { // метод проверки на валидность ввода
     if (!input.validity.valid) { // если инпут не валиден
       this._showError(input); // показать ошибку
     } else { // иначе
@@ -32,26 +32,26 @@ export class FromValidator  {
   };
 
 
-  _checkValidityForm() { // функция проверки валидности всей формы
+  _checkValidityForm() { // метод проверки валидности всей формы
     return this._inputList.every((input) => { // если все инпуты соответствуют валидности
         return input.validity.valid; // возвращаем их
     });
   };
 
 
-  _disablingSubmitButton() { // функция отключения кнопки submit
+  _disablingSubmitButton() { // метод отключения кнопки submit
     this._submitButton.classList.add(this._objectValidation.inactiveButtonClass); // добавляем класс отключенной кнопки
     this._submitButton.disabled = 'disabled'; // добавляем атрибут дisabled
   };
 
 
-  _enablingSubmitButton() { // функция включения кнопки submit
+  _enablingSubmitButton() { // метод включения кнопки submit
     this._submitButton.classList.remove(this._objectValidation.inactiveButtonClass); // удаляем класс отключенной кнопки
     this._submitButton.disabled = ''; // атрибут disabled пуст
   };
 
 
-  _changeSubmitButton() { // функция проверки submit кнопки
+  _changeSubmitButton() { // метод проверки submit кнопки
     if (!this._checkValidityForm()) { // если кнопка не валидна форме
       this._disablingSubmitButton(); // отключить ее
     } else { // иначе
@@ -60,14 +60,14 @@ export class FromValidator  {
   };
 
 
-  _resetSubmitButton() { // функция сброса кнопки после reset
+  _resetSubmitButton() { // метод сброса кнопки после reset
     setTimeout(() => {
         this._changeSubmitButton(); // вызываем функцию после 0s reset
     }, 0);
   };
 
 
-  _setEventListeners() { // функция прослушивания событий
+  _setEventListeners() { // метод прослушивания событий
     this._changeSubmitButton(); // деактивируем при первой загрузке кнопку
 
     this._form.addEventListener('reset', () => { // после reset form
@@ -83,7 +83,7 @@ export class FromValidator  {
   };
 
 
-  enableValidation() {
+  enableValidation() { // метод включения валидации
     this._form.addEventListener('submit', (event) => { // и добавляем каждой форме обработчик
         event.preventDefault(); // отменяем с помощью метода переход после отправки
     });

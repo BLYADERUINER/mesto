@@ -8,13 +8,6 @@ import { FromValidator, objectForValidation } from './FromValidator.js';
 
 
 
-const validationProfileForm = new FromValidator(objectForValidation, popupEditForm);
-const validationCardForm = new FromValidator(objectForValidation, popupAddCardForm);
-validationProfileForm.enableValidation();
-validationCardForm.enableValidation();
-
-
-
 const renderCard = (element, cardsContainer) => { // функция рендера карт
   const card = new Card (element, '#card'); // создаем карту
   const cardElement = card.generateCard();
@@ -32,20 +25,6 @@ cardsArray.forEach(function (item) { // перебираем массив
 let openedPopup; // открытый  попап
 
 
-const closePopupOnOverlay = function (event) { // функция закрытия вне модального окна
-  if (event.target === event.currentTarget) { // если клик происходит вне
-    closePopup(openedPopup); // закрываем
-  }
-};
-
-
-const closePopupOnEsc = function (element) { // функция закрытия на escape
-  if (element.key === 'Escape') { // если происходит событие на кнопку
-    closePopup(openedPopup); // закрыть открытый попап
-  }
-};
-
-
 export const openPopup = function (popup) {   // функция открытия ред.профиля
   popup.classList.add('pop-up_opened');
   openedPopup = popup;  // откртый попап равен попапу
@@ -60,6 +39,27 @@ const closePopup = function (popup) {   // функция закрытия ре�
   popup.removeEventListener('mousedown', closePopupOnOverlay);
   document.removeEventListener('keyup', closePopupOnEsc); // убираем обработчик
 };
+
+
+const closePopupOnOverlay = function (event) { // функция закрытия вне модального окна
+  if (event.target === event.currentTarget) { // если клик происходит вне
+    closePopup(openedPopup); // закрываем
+  }
+};
+
+
+const closePopupOnEsc = function (element) { // функция закрытия на escape
+  if (element.key === 'Escape') { // если происходит событие на кнопку
+    closePopup(openedPopup); // закрыть открытый попап
+  }
+};
+
+
+
+
+const validationProfileForm = new FromValidator(objectForValidation, popupEditForm); // создаем новую валидацию форм Профиля
+const validationCardForm = new FromValidator(objectForValidation, popupAddCardForm); // Карт
+
 
 
 const submitFormCard = function () { // функция отправки формы карт
@@ -84,6 +84,7 @@ const submitFormProfile = function () { // функция отправки фо�
 };
 
 
+
 popupOpenProfileEdit.addEventListener('click', function () { // обработчик открытия попупы редактирования профиля
   nameInputEdit.value = profileName.textContent;
   statusInputEdit.value = profileStatus.textContent;
@@ -105,6 +106,11 @@ popupCloseElementsCard.addEventListener('click', function () { // обработ
 popupCloseCardImage.addEventListener('click', function () { // обработчик закрытия поппупы картинки
   closePopup(popupCardImage);
 });
+
+
+
+validationProfileForm.enableValidation(); // включаем валидацию на форме профиля
+validationCardForm.enableValidation(); // включаем валидацию на форме карт
 
 
 popupEditForm.addEventListener('submit', submitFormProfile); // обработчик отправки формы ред.профиля
