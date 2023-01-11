@@ -3,6 +3,15 @@ import { Card } from './Card.js';
 import { popupProfileEdit, popupCloseProfileEdit, popupElementsCard, popupCloseElementsCard,
   popupOpenProfileEdit, popupOpenElementsCard, profileName, profileStatus, popupEditForm, nameInputEdit, statusInputEdit, popupAddCardForm,
   nameCardInput, imageLinkCardInput, popupCardImage, popupCloseCardImage, elementsSection } from './variables.js';
+import { FromValidator, objectForValidation } from './FromValidator.js';
+
+
+
+
+const validationProfileForm = new FromValidator(objectForValidation, popupEditForm);
+const validationCardForm = new FromValidator(objectForValidation, popupAddCardForm);
+validationProfileForm.enableValidation();
+validationCardForm.enableValidation();
 
 
 

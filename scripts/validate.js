@@ -78,7 +78,9 @@ const setEventListeners = function (form, object) { // функция просл
 
 const enableValidation = function (object) { // функция включения валидации
     const formList = Array.from(document.querySelectorAll(object.formSelector)); // находим массив форм на странице
+    console.log(formList);
     formList.forEach(function (form) { // проходимся по ним
+      console.log(form);
         form.addEventListener('submit', function (event) { // и добавляем каждой форме обработчик
             event.preventDefault(); // отменяем с помощью метода переход после отправки
         });
